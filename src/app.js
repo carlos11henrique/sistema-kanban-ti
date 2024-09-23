@@ -13,6 +13,10 @@ const logsRoutes = require('./routes/logsRoutes');
 const app = express();
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('Bem-vindo à API! Utilize as rotas disponíveis para acessar os recursos.');
+});
+
 app.use('/setores', setoresRoutes);
 app.use('/usuarios', usuariosRoutes);
 app.use('/blocos', blocosRoutes);
