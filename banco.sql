@@ -91,19 +91,56 @@ CREATE TABLE logs (
 );
 
 
+-- Inserts para a tabela de Setores
+INSERT INTO setores (nome_setor) VALUES ('Administrativo');
+INSERT INTO setores (nome_setor) VALUES ('CAA');
+INSERT INTO setores (nome_setor) VALUES ('Manutenção');
+
+-- Inserts para a tabela de Usuários
+INSERT INTO usuarios (nome_completo, senha, email, instituicao, ocupacao, setor_id) 
+VALUES ('João Silva', 'senha123', 'joao.silva@email.com', 'Universidade X', 'Aluno', 1);
+INSERT INTO usuarios (nome_completo, senha, email, instituicao, ocupacao, setor_id) 
+VALUES ('Maria Oliveira', 'senha456', 'maria.oliveira@email.com', 'Universidade Y', 'Técnico de TI', 2);
+INSERT INTO usuarios (nome_completo, senha, email, instituicao, ocupacao, setor_id) 
+VALUES ('Carlos Souza', 'senha789', 'carlos.souza@email.com', 'Universidade Z', 'Administrador', 3);
+
+-- Inserts para a tabela de Blocos
 INSERT INTO blocos (nome_bloco) VALUES ('Bloco A');
 INSERT INTO blocos (nome_bloco) VALUES ('Bloco B');
 INSERT INTO blocos (nome_bloco) VALUES ('Bloco C');
-INSERT INTO blocos (nome_bloco) VALUES ('Bloco D');
 
-
--- Supondo que os IDs dos blocos inseridos sejam 1, 2, 3 e 4 respectivamente
+-- Inserts para a tabela de Salas
 INSERT INTO salas (numero_sala, bloco_id) VALUES ('101', 1);
-INSERT INTO salas (numero_sala, bloco_id) VALUES ('102', 1);
-INSERT INTO salas (numero_sala, bloco_id) VALUES ('201', 2);
-INSERT INTO salas (numero_sala, bloco_id) VALUES ('202', 2);
-INSERT INTO salas (numero_sala, bloco_id) VALUES ('301', 3);
-INSERT INTO salas (numero_sala, bloco_id) VALUES ('302', 3);
-INSERT INTO salas (numero_sala, bloco_id) VALUES ('401', 4);
-INSERT INTO salas (numero_sala, bloco_id) VALUES ('402', 4);
+INSERT INTO salas (numero_sala, bloco_id) VALUES ('102', 2);
+INSERT INTO salas (numero_sala, bloco_id) VALUES ('103', 3);
+
+-- Inserts para a tabela de Máquinas
+INSERT INTO maquinas (numero_maquina, sala_id) VALUES ('PC-001', 1);
+INSERT INTO maquinas (numero_maquina, sala_id) VALUES ('PC-002', 2);
+INSERT INTO maquinas (numero_maquina, sala_id) VALUES ('PC-003', 3);
+
+-- Inserts para a tabela de Problemas
+INSERT INTO problemas (descricao) VALUES ('Problema de rede');
+INSERT INTO problemas (descricao) VALUES ('Máquina não liga');
+INSERT INTO problemas (descricao) VALUES ('Erro no sistema operacional');
+
+-- Inserts para a tabela de Chamados
+INSERT INTO chamados (usuario_id, problema_id, descricao, status) VALUES (1, 1, 'Conexão de internet intermitente.', 'Aceitar');
+INSERT INTO chamados (usuario_id, problema_id, descricao, status) VALUES (2, 2, 'Computador não liga.', 'Em Andamento');
+INSERT INTO chamados (usuario_id, problema_id, descricao, status) VALUES (3, 3, 'Erro ao inicializar o Windows.', 'Pendentes');
+
+-- Inserts para a tabela de Chamados_Maquinas
+INSERT INTO chamados_maquinas (chamado_id, maquina_id) VALUES (1, 1);
+INSERT INTO chamados_maquinas (chamado_id, maquina_id) VALUES (2, 2);
+INSERT INTO chamados_maquinas (chamado_id, maquina_id) VALUES (3, 3);
+
+-- Inserts para a tabela de Atribuídos
+INSERT INTO atribuidos (chamado_id, setor_id) VALUES (1, 1);
+INSERT INTO atribuidos (chamado_id, setor_id) VALUES (2, 2);
+INSERT INTO atribuidos (chamado_id, setor_id) VALUES (3, 3);
+
+-- Inserts para a tabela de Logs
+INSERT INTO logs (chamado_id, usuario_id, acao) VALUES (1, 1, 'Chamado aberto');
+INSERT INTO logs (chamado_id, usuario_id, acao) VALUES (2, 2, 'Chamado em andamento');
+INSERT INTO logs (chamado_id, usuario_id, acao) VALUES (3, 3, 'Chamado pendente');
 
